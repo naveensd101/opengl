@@ -44,6 +44,7 @@ int main (int argc, char** argv) {
   //glutInitDisplayMode sets the display mode.
   //GLUT_DOUBLE is a display mode that allows double buffering.
   //GLUT_RGB is a display mode that allows RGB colors.
+  //add GLUT_DEPTH if you need depth functionality also See rectangle/rectangle.cpp
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
   //glutInitWindowSize sets the width and height of the window.
   //but window size and position can be different
