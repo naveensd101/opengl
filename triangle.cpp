@@ -1,6 +1,8 @@
 #include <GL/freeglut.h>
 #include <GL/gl.h>
-
+/*
+to run: g++ main.c -lglut -lGL -lGLEW -lGLU -o OpenGLExample
+*/
 void renderFunction() {
   //glClearColor specifies the rgb alpha values used by glClear to clear the color buffer.
   //value is between 0.0 and 1.0
