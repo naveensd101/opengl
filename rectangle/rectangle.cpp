@@ -20,7 +20,7 @@ void renderFunction() {
   glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
   glDepthFunc(GL_LESS);
 
-  freopen("points.txt", "r", stdin);
+  freopen("points2.txt", "r", stdin);
   for(int i = 0; i < 3; ++i) {
     switch(i) {
       case 0:
@@ -34,7 +34,7 @@ void renderFunction() {
         break;
     }
     glBegin(GL_POLYGON);
-    for(int j = 0; j < 4; ++j) {
+    for(int j = 0; j < 3; ++j) {
       float x, y, z;
       cin >> x >> y >> z;
       glVertex3f(x, y, z);
