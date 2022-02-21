@@ -3,6 +3,13 @@
 /*
 to run: g++ main.c -lglut -lGL -lGLEW -lGLU -o OpenGLExample
 */
+void keyboard(unsigned char key, int x, int y) {
+    switch (key) {
+    case 27:
+        exit(0);
+        break;
+    }
+}
 void renderFunction() {
   //glClearColor specifies the rgb alpha values used by glClear to clear the color buffer.
   //value is between 0.0 and 1.0
@@ -29,10 +36,11 @@ void renderFunction() {
   //GL_POINTS specifies that the primitives are points.
   //GL_POLYGON specifies that the primitives are polygons.
   glBegin(GL_POLYGON);
-  glVertex2f(1, 1);
-  glVertex2f(-0.25, 0.25);
-  glVertex2f(-0.5, -0.5);
-  glVertex2f(0.5, -0.5);
+  glVertex2f(0.5,0.5);
+  glVertex2f(0,0);
+  glVertex2f(1,0);
+  glVertex2f(1,1);
+  glVertex2f(0,1);
   glEnd();
 
   //glFlush causes the output to be displayed.
@@ -53,6 +61,8 @@ int main (int argc, char** argv) {
   glutCreateWindow("SD with OpenGL");
   //glutDisplayFunc is called when the window needs to be redrawn.
   glutDisplayFunc(renderFunction);
+  //keyboard callback
+  glutKeyboardFunc(keyboard);
   //glutMainLoop enters the GLUT event processing loop.
   //should be called only once.
   //glutMainLoop never returns.
