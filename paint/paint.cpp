@@ -18,8 +18,23 @@ void keyboard(unsigned char key, int x, int y) {
   }
 }
 
+void glutMotion(int x, int y) {
+  cout << "x: " << x << " y: " << y << endl;
+  float H = glutGet(GLUT_WINDOW_HEIGHT);
+  float W = glutGet(GLUT_WINDOW_WIDTH);
+  float X = ((float)x - W / 2) / (W / 2);
+  float Y = ((H - (float)y) - H / 2) / (H / 2);
+
+  glColor3f(1.0, 0, 0);
+  glPointSize(5);
+  glBegin(GL_POINTS);
+  glVertex2f(X, Y);
+  glEnd();
+  glFlush();
+}
+
 void mouse(int button, int state, int x, int y) {
-  if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+  if (0 and button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
     float H = glutGet(GLUT_WINDOW_HEIGHT);
     float W = glutGet(GLUT_WINDOW_WIDTH);
     float X = ((float)x - W / 2) / (W / 2);
@@ -60,6 +75,8 @@ int main (int argc, char** argv) {
   glutKeyboardFunc(keyboard);
   //glutMouseFunc sets the mouse callback function.
   glutMouseFunc(mouse);
+  //glutMotionFunc sets the motion callback function.
+  glutMotionFunc(glutMotion);
   //glutDisplayFunc is called when the window needs to be redrawn.
   glutDisplayFunc(renderFunction);
   //glutMainLoop enters the GLUT event processing loop.
