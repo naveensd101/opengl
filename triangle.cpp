@@ -1,14 +1,33 @@
 #include <GL/freeglut.h>
 #include <GL/gl.h>
+#include <random>
 /*
 to run: g++ main.c -lglut -lGL -lGLEW -lGLU -o OpenGLExample
 */
+//return a randow number between -1 and 1
+float rf() {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(-1, 1);
+    return dis(gen);
+}
 void keyboard(unsigned char key, int x, int y) {
-    switch (key) {
-    case 27:
-        exit(0);
-        break;
-    }
+  switch (key) {
+  case 27:
+      exit(0);
+      break;
+  }
+  glBegin(GL_POLYGON);
+  glColor3f(rf(), rf(), rf());
+  glVertex2f(rf(), rf());
+  glColor3f(rf(), rf(), rf());
+  glVertex2f(rf(), rf());
+  glColor3f(rf(), rf(), rf());
+  glVertex2f(rf(), rf());
+  glEnd();
+
+  //glFlush causes the output to be displayed.
+  glFlush();
 }
 void renderFunction() {
   //glClearColor specifies the rgb alpha values used by glClear to clear the color buffer.
@@ -36,11 +55,12 @@ void renderFunction() {
   //GL_POINTS specifies that the primitives are points.
   //GL_POLYGON specifies that the primitives are polygons.
   glBegin(GL_POLYGON);
-  glVertex2f(0.5,0.5);
-  glVertex2f(0,0);
-  glVertex2f(1,0);
-  glVertex2f(1,1);
-  glVertex2f(0,1);
+  glColor3f(rf(), rf(), rf());
+  glVertex2f(rf(), rf());
+  glColor3f(rf(), rf(), rf());
+  glVertex2f(rf(), rf());
+  glColor3f(rf(), rf(), rf());
+  glVertex2f(rf(), rf());
   glEnd();
 
   //glFlush causes the output to be displayed.
