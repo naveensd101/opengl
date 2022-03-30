@@ -3,6 +3,10 @@
  - trying out some Open GL code
  - To run open gl cpp file : g++ file.cpp -lglut -lGL -lGLU -lGLEW
 
+## mouse pattern with center
+
+![mouse pattern](mouse-pattern/mono_color.png)
+
 ## square pattern
 
 ![square pattern](square-fractal/square.png)
