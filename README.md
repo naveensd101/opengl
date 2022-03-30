@@ -7,6 +7,8 @@
 
 ![mouse pattern](mouse-pattern/mono_color.png)
 
+![multicolor patter](mouse-pattern/multi_color.png)
+
 ## square pattern
 
 ![square pattern](square-fractal/square.png)

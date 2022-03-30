@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 void keyboard(unsigned char key, int x, int y) {
@@ -11,7 +12,7 @@ void keyboard(unsigned char key, int x, int y) {
     exit(0);
     break;
   case 'r':
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(0.75, 0.75, 0.75, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glFlush();
     break;
@@ -25,7 +26,27 @@ void glutMotion(int x, int y) {
   float X = ((float)x - W / 2) / (W / 2);
   float Y = ((H - (float)y) - H / 2) / (H / 2);
 
-  glColor3f(1.0, 0, 0);
+  glLineWidth(1.0);
+  glColor3f(0.0, 0.0, 0.0);
+
+  if(X > 0 && Y > 0) {
+    double angle = atan(Y / X);
+    glColor3f(angle/(M_PI/2), 0, 0);
+  }
+  else if(X < 0 && Y > 0) {
+    double angle = atan(Y / (-1*X));
+    angle = M_PI/2.0 - angle;
+    glColor3f(0, angle/(M_PI/2), 0);
+  }
+  else if(X < 0 && Y < 0) {
+    double angle = atan((-1*Y) / (-1*X));
+    glColor3f(0, 0, angle/(M_PI/2));
+  }
+  else if(X > 0 && Y < 0) {
+    double angle = atan((-1*Y) / X);
+    angle = M_PI/2.0 - angle;
+    glColor3f(angle/(M_PI/2),angle/(M_PI/2) ,0);
+  }
   glPointSize(5);
   glBegin(GL_LINES);
   glVertex2f(0,0);
@@ -51,7 +72,7 @@ void mouse(int button, int state, int x, int y) {
 }
 
 void renderFunction() {
-  glClearColor(0.0, 0.0, 0.0, 0.0);
+  glClearColor(0.75, 0.75, 0.75, 1.0);
   glClear(GL_COLOR_BUFFER_BIT);
   glColor3f(0.0, 0.0, 1.0);
   glPointSize(5.0);
